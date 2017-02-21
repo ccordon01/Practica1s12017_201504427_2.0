@@ -34,23 +34,23 @@ public class Form_Jugadores extends javax.swing.JFrame {
         for (int i = 0; i < xml.dimension; i++) {
             for (int j = 0; j < xml.dimension; j++) {
                 if (m.item(i, j) != null) {
-                    System.out.println("nodo existe " + " valor: " + m.item(i, j).datos.toString());
+                    //System.out.println("nodo existe " + " valor: " + m.item(i, j).datos.toString());
                 } else {
                     System.out.println("pise");
                 }
             }
         }
-        System.out.println("antes de empezar " + diccionario.getsize());
-        System.out.println("datos " + diccionario.primerNodo.datos.toString());
+        //System.out.println("antes de empezar " + diccionario.getsize());
+        //System.out.println("datos " + diccionario.primerNodo.datos.toString());
         for (int i = 0; i < diccionario.getsize(); i++) {
-            System.out.println("nodo palabra " + diccionario.nodoPosicion(i));
+            //System.out.println("nodo palabra " + diccionario.nodoPosicion(i));
         }
-        System.out.println(diccionario.nodoPosicionKill(1));
+        //System.out.println(diccionario.nodoPosicionKill(1));
         for (int i = 0; i < diccionario.getsize(); i++) {
-            System.out.println("nodo palabra " + diccionario.nodoPosicion(i));
+            //System.out.println("nodo palabra " + diccionario.nodoPosicion(i));
         }
 
-        System.out.println("size: " + (letras.getsize() - 1));
+        //System.out.println("size: " + (letras.getsize() - 1));
         for (int i = 0; i < 12; i++) {
             letras.insertarAlFinal("A");
             letras.insertarAlFinal("E");
@@ -95,26 +95,26 @@ public class Form_Jugadores extends javax.swing.JFrame {
             String letter = letras.nodoPosicionKill(rand.nextInt(letras.getsize() - 1));
             //System.out.println(letras.nodoPosicionKill(rand.nextInt(letras.getsize() - 1)) + " actual: " + letras.getsize()); 
             if (letter.equalsIgnoreCase("t") || letter.equalsIgnoreCase("u") || letter.equalsIgnoreCase("r") || letter.equalsIgnoreCase("l") || letter.equalsIgnoreCase("n") || letter.equalsIgnoreCase("a") || letter.equalsIgnoreCase("e") || letter.equalsIgnoreCase("o") || letter.equalsIgnoreCase("i") || letter.equalsIgnoreCase("s")) {
-                System.out.println("Letra: " + letter + " puntos: " + 1);
+                //System.out.println("Letra: " + letter + " puntos: " + 1);
                 letras_cola.insertarAlFinal(new Letras(letter, 1));
             } else if (letter.equalsIgnoreCase("d") || letter.equalsIgnoreCase("g")) {
-                System.out.println("Letra: " + letter + " puntos: " + 2);
+                //System.out.println("Letra: " + letter + " puntos: " + 2);
                 letras_cola.insertarAlFinal(new Letras(letter, 2));
             } else if (letter.equalsIgnoreCase("c") || letter.equalsIgnoreCase("b") || letter.equalsIgnoreCase("m") || letter.equalsIgnoreCase("p")) {
-                System.out.println("Letra: " + letter + " puntos: " + 3);
+                //System.out.println("Letra: " + letter + " puntos: " + 3);
                 letras_cola.insertarAlFinal(new Letras(letter, 3));
             } else if (letter.equalsIgnoreCase("h") || letter.equalsIgnoreCase("f") || letter.equalsIgnoreCase("v") || letter.equalsIgnoreCase("y")) {
-                System.out.println("Letra: " + letter + " puntos: " + 4);
+                //System.out.println("Letra: " + letter + " puntos: " + 4);
                 letras_cola.insertarAlFinal(new Letras(letter, 4));
             } else if (letter.equalsIgnoreCase("q")) {
-                System.out.println("Letra: " + letter + " puntos: " + 5);
+                //System.out.println("Letra: " + letter + " puntos: " + 5);
                 letras_cola.insertarAlFinal(new Letras(letter, 5));
             } else if (letter.equalsIgnoreCase("j") || letter.equalsIgnoreCase("ñ") || letter.equalsIgnoreCase("x")) {
-                System.out.println("Letra: " + letter + " puntos: " + 8);
+                //System.out.println("Letra: " + letter + " puntos: " + 8);
                 letras_cola.insertarAlFinal(new Letras(letter, 8));
             } //else (letter.equalsIgnoreCase("c") || letter.equalsIgnoreCase("b") || letter.equalsIgnoreCase("m") || letter.equalsIgnoreCase("p")) {
             else {
-                System.out.println("Letra: " + letter + " puntos: " + 10);
+                //System.out.println("Letra: " + letter + " puntos: " + 10);
                 letras_cola.insertarAlFinal(new Letras(letter, 10));
             }
         }
@@ -278,8 +278,11 @@ public class Form_Jugadores extends javax.swing.JFrame {
             tab.m = m;
             tab.carga();
             //rand.nextInt(letras.getsize() - 1)
-            int random = rand.nextInt(lista_jugadores.tam - 1);
+            int random=0;
+            //do{
+            random = (int) (Math.random() * (lista_jugadores.tam - 1));
             System.out.println("posicion "+random + " Tamaño actual: "+lista_jugadores.tam );
+            //}while(random==0);
             Jugadores player = lista_jugadores.nodoPosicion(random);
             JOptionPane.showMessageDialog(null, "Comienza la partida: "+player.getNombre_usuario());
             System.out.println("posicion "+random);
