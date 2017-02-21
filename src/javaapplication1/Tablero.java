@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Label;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /*
@@ -104,11 +105,7 @@ public class Tablero extends javax.swing.JFrame {
                 tablero_panel.add(tab);
             }
         }
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 2; j++) {
-                m_temporales.item(i, j).datos = -1;
-            }
-        }
+        clean();
         tablero_panel.setBackground(new java.awt.Color(0, 153, 153));
         /*jButton2.setSize(sizex - 5, sizey - 5);
         jButton3.setSize(sizex - 5, sizey - 5);
@@ -509,6 +506,11 @@ public class Tablero extends javax.swing.JFrame {
         jTextField1.setBounds(643, 292, 178, 25);
 
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton1);
         jButton1.setBounds(775, 319, 71, 23);
 
@@ -548,6 +550,11 @@ public class Tablero extends javax.swing.JFrame {
         jCheckBox10.setBounds(765, 426, 81, 23);
 
         jButton9.setText("Cancelar Todo");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton9);
         jButton9.setBounds(1040, 580, 164, 47);
 
@@ -561,6 +568,11 @@ public class Tablero extends javax.swing.JFrame {
         jButton10.setBounds(870, 580, 151, 47);
 
         jButton11.setText("Cambiar");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton11);
         jButton11.setBounds(730, 460, 120, 23);
 
@@ -648,7 +660,86 @@ public class Tablero extends javax.swing.JFrame {
         // TODO add your handling code here:
         jugador_actual = jugador_actual.siguienteNodo;
         reload((Jugadores) jugador_actual.datos);
+        clean();
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        reload((Jugadores) jugador_actual.datos);
+        clean();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        ListaSimple nuevas_palabras = new ListaSimple();
+        if (jCheckBox1.isSelected()) {
+            jCheckBox1.setSelected(false);
+            nuevas_palabras.insertarAlFinal((Letras) letras_cola.eliminarDelFrente());
+            letras_cola.insertarAlFinal(letra1);
+        } else {
+            nuevas_palabras.insertarAlFinal(letra1);
+        }
+        if (jCheckBox2.isSelected()) {
+            jCheckBox2.setSelected(false);
+            nuevas_palabras.insertarAlFinal((Letras) letras_cola.eliminarDelFrente());
+            letras_cola.insertarAlFinal(letra2);
+        } else {
+            nuevas_palabras.insertarAlFinal(letra2);
+        }
+        if (jCheckBox3.isSelected()) {
+            jCheckBox3.setSelected(false);
+            nuevas_palabras.insertarAlFinal((Letras) letras_cola.eliminarDelFrente());
+            letras_cola.insertarAlFinal(letra3);
+        } else {
+            nuevas_palabras.insertarAlFinal(letra3);
+        }
+        if (jCheckBox4.isSelected()) {
+            jCheckBox4.setSelected(false);
+            nuevas_palabras.insertarAlFinal((Letras) letras_cola.eliminarDelFrente());
+            letras_cola.insertarAlFinal(letra4);
+        } else {
+            nuevas_palabras.insertarAlFinal(letra4);
+        }
+        if (jCheckBox10.isSelected()) {
+            jCheckBox10.setSelected(false);
+            nuevas_palabras.insertarAlFinal((Letras) letras_cola.eliminarDelFrente());
+            letras_cola.insertarAlFinal(letra5);
+        } else {
+            nuevas_palabras.insertarAlFinal(letra5);
+        }
+        if (jCheckBox9.isSelected()) {
+            jCheckBox9.setSelected(false);
+            nuevas_palabras.insertarAlFinal((Letras) letras_cola.eliminarDelFrente());
+            letras_cola.insertarAlFinal(letra6);
+        } else {
+            nuevas_palabras.insertarAlFinal(letra6);
+        }
+        if (jCheckBox6.isSelected()) {
+            jCheckBox6.setSelected(false);
+            nuevas_palabras.insertarAlFinal((Letras) letras_cola.eliminarDelFrente());
+            letras_cola.insertarAlFinal(letra7);
+        } else {
+            nuevas_palabras.insertarAlFinal(letra7);
+        };
+        Jugadores gamer = (Jugadores) jugador_actual.datos;
+        gamer.setPalabras(nuevas_palabras);
+        jugador_actual.datos = gamer;
+        reload((Jugadores) jugador_actual.datos);
+        JOptionPane.showMessageDialog(jList1, "Cambio Realizado");
+        jugador_actual = jugador_actual.siguienteNodo;
+        reload((Jugadores) jugador_actual.datos);
+        clean();
+
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (diccionario.insertar(jTextField1.getText())) {
+            JOptionPane.showMessageDialog(jList1, "Palabra Guardada");
+        } else {
+            JOptionPane.showMessageDialog(jList1, "Palabra ya existe en el diccionario");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -680,7 +771,9 @@ public class Tablero extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tablero().setVisible(true);
+                Tablero tab = new Tablero();
+                tab.setLocationRelativeTo(null);
+                tab.setVisible(true);
             }
         });
     }
@@ -787,8 +880,8 @@ public class Tablero extends javax.swing.JFrame {
         if (label == jLabel8) {
             if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
-                m_temporales.item(0,0).datos = labelx;
-                m_temporales.item(0,1).datos = labely;
+                m_temporales.item(0, 0).datos = labelx;
+                m_temporales.item(0, 1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 //label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -801,8 +894,8 @@ public class Tablero extends javax.swing.JFrame {
         } else if (label == jLabel9) {
             if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
-                m_temporales.item(1,0).datos = labelx;
-                m_temporales.item(1,1).datos = labely;
+                m_temporales.item(1, 0).datos = labelx;
+                m_temporales.item(1, 1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -814,8 +907,8 @@ public class Tablero extends javax.swing.JFrame {
         } else if (label == jLabel10) {
             if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
-                m_temporales.item(2,0).datos = labelx;
-                m_temporales.item(2,1).datos = labely;
+                m_temporales.item(2, 0).datos = labelx;
+                m_temporales.item(2, 1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -827,8 +920,8 @@ public class Tablero extends javax.swing.JFrame {
         } else if (label == jLabel11) {
             if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
-                m_temporales.item(3,0).datos = labelx;
-                m_temporales.item(3,1).datos = labely;
+                m_temporales.item(3, 0).datos = labelx;
+                m_temporales.item(3, 1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -840,8 +933,8 @@ public class Tablero extends javax.swing.JFrame {
         } else if (label == jLabel12) {
             if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
-                m_temporales.item(4,0).datos = labelx;
-                m_temporales.item(4,1).datos = labely;
+                m_temporales.item(4, 0).datos = labelx;
+                m_temporales.item(4, 1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -853,8 +946,8 @@ public class Tablero extends javax.swing.JFrame {
         } else if (label == jLabel13) {
             if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
-                m_temporales.item(5,0).datos = labelx;
-                m_temporales.item(5,1).datos = labely;
+                m_temporales.item(5, 0).datos = labelx;
+                m_temporales.item(5, 1).datos = labely;
             } else {
                 label.setSize(70, 48);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -866,8 +959,8 @@ public class Tablero extends javax.swing.JFrame {
         } else if (label == jLabel14) {
             if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
-                m_temporales.item(6,0).datos = labelx;
-                m_temporales.item(6,1).datos = labely;
+                m_temporales.item(6, 0).datos = labelx;
+                m_temporales.item(6, 1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -971,5 +1064,13 @@ public class Tablero extends javax.swing.JFrame {
             }
         }
         return true;
+    }
+
+    private void clean() {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 2; j++) {
+                m_temporales.item(i, j).datos = -1;
+            }
+        }
     }
 }

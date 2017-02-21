@@ -90,6 +90,16 @@ public class ListaSimple {
         }
         return palabra;
     }
+    
+    public Boolean insertar(String word){
+        for (int i = 0; i < getsize(); i++) {
+            if (nodoPosicionO(i).toString().equalsIgnoreCase(word)) {
+                return false;
+            }
+        }
+        insertarAlFinal(word);
+    return true;
+    }
     public String nodoPosicionKill(int posicion) {
         String palabra = null;
         if (!estaVacia()) {
