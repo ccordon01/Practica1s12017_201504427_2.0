@@ -30,6 +30,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
         xml.cargarXml();
         m = xml.m;
         dim = xml.dimension;
+        
         diccionario = xml.diccionario;
         for (int i = 0; i < xml.dimension; i++) {
             for (int j = 0; j < xml.dimension; j++) {

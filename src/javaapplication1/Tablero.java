@@ -16,6 +16,7 @@ import javax.swing.JPanel;
  * @author Loscordonhdez
  */
 public class Tablero extends javax.swing.JFrame {
+
     public NodoLista jugador_actual;
     public ListaCircular lista_jugadores = new ListaCircular();
     public Matriz m = new Matriz();
@@ -46,6 +47,7 @@ public class Tablero extends javax.swing.JFrame {
     int[] label7pos = new int[2];
     int sizex = 0;
     int sizey = 0;
+    public Matriz m_temporales = new Matriz(7, 2);
 
     /**
      * Creates new form Tablero
@@ -100,6 +102,11 @@ public class Tablero extends javax.swing.JFrame {
                 tab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
                 tab.setBounds((sizex * i), (sizey * j), sizex, sizey);
                 tablero_panel.add(tab);
+            }
+        }
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 2; j++) {
+                m_temporales.item(i, j).datos = -1;
             }
         }
         tablero_panel.setBackground(new java.awt.Color(0, 153, 153));
@@ -778,8 +785,10 @@ public class Tablero extends javax.swing.JFrame {
         }
 
         if (label == jLabel8) {
-            if (labelx > 0 && labely > 0) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
+                m_temporales.item(0,0).datos = labelx;
+                m_temporales.item(0,1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 //label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -790,8 +799,10 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel9) {
-            if (labelx > 0 && labely > 0) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
+                m_temporales.item(1,0).datos = labelx;
+                m_temporales.item(1,1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -801,8 +812,10 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel10) {
-            if (labelx > 0 && labely > 0) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
+                m_temporales.item(2,0).datos = labelx;
+                m_temporales.item(2,1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -812,8 +825,10 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel11) {
-            if (labelx > 0 && labely > 0) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
+                m_temporales.item(3,0).datos = labelx;
+                m_temporales.item(3,1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -823,8 +838,10 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel12) {
-            if (labelx > 0 && labely > 0) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
+                m_temporales.item(4,0).datos = labelx;
+                m_temporales.item(4,1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -834,8 +851,10 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel13) {
-            if (labelx > 0 && labely > 0) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
+                m_temporales.item(5,0).datos = labelx;
+                m_temporales.item(5,1).datos = labely;
             } else {
                 label.setSize(70, 48);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -845,8 +864,10 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel14) {
-            if (labelx > 0 && labely > 0) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely)) {
                 label.setLocation(labelx, labely);
+                m_temporales.item(6,0).datos = labelx;
+                m_temporales.item(6,1).datos = labely;
             } else {
                 label.setSize(70, 46);
                 label.setBackground(new java.awt.Color(102, 102, 102));
@@ -859,8 +880,8 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     private void reload_label(JLabel label) {
-        int labelx =0;
-        int labely=0;
+        int labelx = 0;
+        int labely = 0;
         if (label == jLabel8) {
             if (labelx > 0 && labely > 0) {
                 label.setLocation(labelx, labely);
@@ -916,7 +937,7 @@ public class Tablero extends javax.swing.JFrame {
                 label.setForeground(new java.awt.Color(204, 204, 204));
                 label.setLocation(label5orign[0], label5orign[1]);
             }
-            
+
             //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel13) {
             if (labelx > 0 && labely > 0) {
@@ -942,5 +963,13 @@ public class Tablero extends javax.swing.JFrame {
             //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         }
     }
-}
 
+    private boolean validar_pos(int labelx, int labely) {
+        for (int i = 0; i < 7; i++) {
+            if (m_temporales.item(i, 0).datos.toString().equals(String.valueOf(labelx)) && m_temporales.item(i, 1).datos.toString().equals(String.valueOf(labely))) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
