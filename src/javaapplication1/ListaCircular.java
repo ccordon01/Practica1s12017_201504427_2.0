@@ -51,6 +51,20 @@ public class ListaCircular {
             return jugador;
         }
     }
+    public NodoLista nodoPosicionN(int posicion) {
+        NodoLista temp = primerNodo;
+        //Jugadores jugador = (Jugadores) temp.datos;
+        if (posicion == 0) {
+            return temp;
+        } else {
+            for (int i = 0; i < posicion; i++) {
+                temp = temp.siguienteNodo;
+            }
+            //jugador = (Jugadores) temp.datos;
+
+            return temp;
+        }
+    }
 
     public int getsize() {
         return tam;

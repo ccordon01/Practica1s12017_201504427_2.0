@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * @author Loscordonhdez
  */
 public class Tablero extends javax.swing.JFrame {
-
+    public NodoLista jugador_actual;
     public ListaCircular lista_jugadores = new ListaCircular();
     public Matriz m = new Matriz();
     public ListaSimple diccionario = new ListaSimple();
@@ -82,7 +82,8 @@ public class Tablero extends javax.swing.JFrame {
             for (int j = 0; j < dim; j++) {
                 JPanel tab = new JPanel();
                 JLabel text = new JLabel();
-                text.setText(i+","+j);
+                text.setText("");
+                text.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
                 //System.out.println("estoy leyendo: " + m.item(i, j).datos.toString());
                 if (m.item(i, j).datos.toString().equals("3")) {
                     tab.setBackground(Color.cyan);
@@ -130,6 +131,19 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     public void reload(Jugadores player) {
+
+        /*jLabel8.setSize(70, 46);
+        jLabel8.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel8.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setLocation(label1orign[0], label1orign[1]);*/
+        reload_label(jLabel8);
+        reload_label(jLabel9);
+        reload_label(jLabel10);
+        reload_label(jLabel11);
+        reload_label(jLabel12);
+        reload_label(jLabel13);
+        reload_label(jLabel14);
         jLabel3.setText(player.nombre_usuario);
         letra1 = (Letras) player.palabras.nodoPosicionO(0);
         letra2 = (Letras) player.palabras.nodoPosicionO(1);
@@ -213,8 +227,9 @@ public class Tablero extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(151, 222, 222));
         jPanel6.setLayout(null);
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel8.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("R");
         jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -232,8 +247,9 @@ public class Tablero extends javax.swing.JFrame {
         jPanel6.add(jLabel8);
         jLabel8.setBounds(640, 535, 70, 46);
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel9.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel9.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("R");
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -251,8 +267,9 @@ public class Tablero extends javax.swing.JFrame {
         jPanel6.add(jLabel9);
         jLabel9.setBounds(640, 490, 70, 46);
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel10.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel10.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("R");
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -270,8 +287,9 @@ public class Tablero extends javax.swing.JFrame {
         jPanel6.add(jLabel10);
         jLabel10.setBounds(710, 490, 70, 46);
 
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel11.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("R");
         jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -292,8 +310,9 @@ public class Tablero extends javax.swing.JFrame {
         jPanel6.add(jLabel11);
         jLabel11.setBounds(780, 490, 70, 46);
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel12.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel12.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("R");
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -311,8 +330,9 @@ public class Tablero extends javax.swing.JFrame {
         jPanel6.add(jLabel12);
         jLabel12.setBounds(780, 535, 70, 46);
 
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel13.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel13.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("R");
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -330,8 +350,9 @@ public class Tablero extends javax.swing.JFrame {
         jPanel6.add(jLabel13);
         jLabel13.setBounds(710, 580, 70, 48);
 
-        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel14.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel14.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("R");
         jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -524,6 +545,11 @@ public class Tablero extends javax.swing.JFrame {
         jButton9.setBounds(1040, 580, 164, 47);
 
         jButton10.setText("Validar Todo");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
         jPanel6.add(jButton10);
         jButton10.setBounds(870, 580, 151, 47);
 
@@ -611,6 +637,12 @@ public class Tablero extends javax.swing.JFrame {
         FinMovimiento(jLabel8, evt);
     }//GEN-LAST:event_jLabel8MouseReleased
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        jugador_actual = jugador_actual.siguienteNodo;
+        reload((Jugadores) jugador_actual.datos);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -689,7 +721,8 @@ public class Tablero extends javax.swing.JFrame {
     private void Movimiento(JLabel label, java.awt.event.MouseEvent mme) {
         label.setSize(sizex, sizey);
         label.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        label.setBackground(Color.red);
+        label.setBackground(Color.white);
+        label.setForeground(Color.black);
         label.setLocation(label.getX() + mme.getX() - label.getWidth() / 2,
                 label.getY() + mme.getY() - label.getHeight() / 2);
         if (label == jLabel8) {
@@ -730,7 +763,7 @@ public class Tablero extends javax.swing.JFrame {
         int labelx = -1;
         int labely = -1;
         for (int i = 0; i < dim; i++) {
-            if (x >= tablero_panel.getX() && x <= (tablero_panel.getX() +(sizex + (sizex * i)))) {
+            if (x >= tablero_panel.getX() && x <= (tablero_panel.getX() + (sizex + (sizex * i)))) {
                 labelx = tablero_panel.getX() + (sizex * i);
                 System.out.println("x:" + i);
                 break;
@@ -749,8 +782,11 @@ public class Tablero extends javax.swing.JFrame {
                 label.setLocation(labelx, labely);
             } else {
                 label.setSize(70, 46);
-                label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+                //label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
                 label.setLocation(label1orign[0], label1orign[1]);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel9) {
@@ -758,7 +794,9 @@ public class Tablero extends javax.swing.JFrame {
                 label.setLocation(labelx, labely);
             } else {
                 label.setSize(70, 46);
-                label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
                 label.setLocation(label2orign[0], label2orign[1]);
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
@@ -767,7 +805,9 @@ public class Tablero extends javax.swing.JFrame {
                 label.setLocation(labelx, labely);
             } else {
                 label.setSize(70, 46);
-                label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
                 label.setLocation(label3orign[0], label3orign[1]);
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
@@ -776,7 +816,9 @@ public class Tablero extends javax.swing.JFrame {
                 label.setLocation(labelx, labely);
             } else {
                 label.setSize(70, 46);
-                label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
                 label.setLocation(label4orign[0], label4orign[1]);
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
@@ -785,7 +827,9 @@ public class Tablero extends javax.swing.JFrame {
                 label.setLocation(labelx, labely);
             } else {
                 label.setSize(70, 46);
-                label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
                 label.setLocation(label5orign[0], label5orign[1]);
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
@@ -793,8 +837,10 @@ public class Tablero extends javax.swing.JFrame {
             if (labelx > 0 && labely > 0) {
                 label.setLocation(labelx, labely);
             } else {
-                label.setSize(sizex, sizey);
-                label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+                label.setSize(70, 48);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
                 label.setLocation(label6orign[0], label6orign[1]);
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
@@ -803,10 +849,98 @@ public class Tablero extends javax.swing.JFrame {
                 label.setLocation(labelx, labely);
             } else {
                 label.setSize(70, 46);
-                label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
                 label.setLocation(label7orign[0], label7orign[1]);
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         }
     }
+
+    private void reload_label(JLabel label) {
+        int labelx =0;
+        int labely=0;
+        if (label == jLabel8) {
+            if (labelx > 0 && labely > 0) {
+                label.setLocation(labelx, labely);
+            } else {
+                label.setSize(70, 46);
+                //label.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+                label.setLocation(label1orign[0], label1orign[1]);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
+            }
+            //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
+        } else if (label == jLabel9) {
+            if (labelx > 0 && labely > 0) {
+                label.setLocation(labelx, labely);
+            } else {
+                label.setSize(70, 46);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
+                label.setLocation(label2orign[0], label2orign[1]);
+            }
+            //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
+        } else if (label == jLabel10) {
+            if (labelx > 0 && labely > 0) {
+                label.setLocation(labelx, labely);
+            } else {
+                label.setSize(70, 46);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
+                label.setLocation(label3orign[0], label3orign[1]);
+            }
+            //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
+        } else if (label == jLabel11) {
+            if (labelx > 0 && labely > 0) {
+                label.setLocation(labelx, labely);
+            } else {
+                label.setSize(70, 46);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
+                label.setLocation(label4orign[0], label4orign[1]);
+            }
+            //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
+        } else if (label == jLabel12) {
+            if (labelx > 0 && labely > 0) {
+                label.setLocation(labelx, labely);
+            } else {
+                label.setSize(70, 46);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
+                label.setLocation(label5orign[0], label5orign[1]);
+            }
+            
+            //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
+        } else if (label == jLabel13) {
+            if (labelx > 0 && labely > 0) {
+                label.setLocation(labelx, labely);
+            } else {
+                label.setSize(70, 48);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
+                label.setLocation(label6orign[0], label6orign[1]);
+            }
+            //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
+        } else if (label == jLabel14) {
+            if (labelx > 0 && labely > 0) {
+                label.setLocation(labelx, labely);
+            } else {
+                label.setSize(70, 46);
+                label.setBackground(new java.awt.Color(102, 102, 102));
+                label.setFont(new java.awt.Font("Sitka Subheading", 1, 40)); // NOI18N
+                label.setForeground(new java.awt.Color(204, 204, 204));
+                label.setLocation(label7orign[0], label7orign[1]);
+            }
+            //System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
+        }
+    }
 }
+

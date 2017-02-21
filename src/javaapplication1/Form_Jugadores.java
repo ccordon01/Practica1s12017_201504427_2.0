@@ -284,6 +284,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
             System.out.println("posicion "+random + " Tamaño actual: "+lista_jugadores.tam );
             //}while(random==0);
             Jugadores player = lista_jugadores.nodoPosicion(random);
+            tab.jugador_actual= lista_jugadores.nodoPosicionN(random) ;
             JOptionPane.showMessageDialog(null, "Comienza la partida: "+player.getNombre_usuario());
             System.out.println("posicion "+random);
             tab.reload(player);
