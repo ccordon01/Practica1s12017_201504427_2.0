@@ -1,8 +1,8 @@
 digraph G
-{qw; 
-aa; 
-aa; 
-qw -> aa; 
-aa -> gh; 
+{ww; 
+zx; 
+zx; 
+ww -> zx; 
+zx -> qq; 
 
 }

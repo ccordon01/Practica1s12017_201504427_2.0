@@ -1401,17 +1401,26 @@ public class Tablero extends javax.swing.JFrame {
         }
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
-                archivo = archivo + m.item(i, j).name + "; \n";
+                if(m.item(i, j).siguienteNodo!=null){
+                archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).siguienteNodo.name + "; \n";
+            }
+                if(m.item(i, j).anteriorNodo!=null){
+                archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).anteriorNodo.name + "; \n";
+            }
+                if(m.item(i, j).inferiorNodo!=null){
+                archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).inferiorNodo.name + "; \n";
+            }
+                if(m.item(i, j).superiorNodo!=null){
+                archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).superiorNodo.name + "; \n";
+            }
             }
         }
-        //archivo = archivo + dat.letra + " -> " + dat1.letra + "; \n";
-        
-        //System.out.println(archivo);
+        //
         grafic.grafo(archivo, "matriz");
         grafic.generar("matriz");
     }
     public void timer() {
-        Timer timer = new Timer(1000, new ActionListener() {
+        Timer timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Thread hilo = new Thread(new Hilo());
@@ -1452,7 +1461,6 @@ public class Tablero extends javax.swing.JFrame {
             grafo_actual();
             grafo_dic();
             grafo_cola();
-            grafo_m();
         }
     }
 }
