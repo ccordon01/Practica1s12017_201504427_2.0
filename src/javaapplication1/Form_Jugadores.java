@@ -289,6 +289,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Comienza la partida: "+player.getNombre_usuario());
             System.out.println("posicion "+random);
             tab.reload(player);
+            tab.grafo_jugadores();
             tab.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Como minimo 2 jugadores");

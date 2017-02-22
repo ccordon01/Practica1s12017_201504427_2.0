@@ -85,7 +85,7 @@ public class Tablero extends javax.swing.JFrame {
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 JPanel tab = new JPanel();
-                JLabel text = new JLabel(); 
+                JLabel text = new JLabel();
                 text.setText(" ");
                 text.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
                 //System.out.println("estoy leyendo: " + m.item(i, j).datos.toString());
@@ -146,8 +146,8 @@ public class Tablero extends javax.swing.JFrame {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
                 JLabel text = (JLabel) m_tabs.item(i, j).datos;
-                if(m.item(i, j).letra != null){
-                text.setText(m.item(i, j).letra.letra);
+                if (m.item(i, j).letra != null) {
+                    text.setText(m.item(i, j).letra.letra);
                 }
             }
         }
@@ -200,6 +200,7 @@ public class Tablero extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1250, 680));
@@ -557,6 +558,15 @@ public class Tablero extends javax.swing.JFrame {
         jPanel6.add(jButton11);
         jButton11.setBounds(730, 460, 120, 23);
 
+        jButton2.setText("FIN");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton2);
+        jButton2.setBounds(1150, 10, 80, 30);
+
         getContentPane().add(jPanel6);
         jPanel6.setBounds(0, 0, 1250, 650);
 
@@ -670,13 +680,15 @@ public class Tablero extends javax.swing.JFrame {
         if (letra7 != m_temporales.item(6, 0).letra) {
             nuevas_palabras.insertarAlFinal(letra7);
         }
-        while(7!=nuevas_palabras.getsize()){
+        while (7 != nuevas_palabras.getsize()) {
             nuevas_palabras.insertarAlFinal((Letras) letras_cola.eliminarDelFrente());
         }
         if (filas()) {
             gamer.setPalabras(nuevas_palabras);
+            JOptionPane.showMessageDialog(jList1, "Muy aztuto prro");
         } else if (col()) {
             gamer.setPalabras(nuevas_palabras);
+            JOptionPane.showMessageDialog(jList1, "Bien jugado viejo");
         } else {
             gamer.setPalabras(nuevas_palabras);
             JOptionPane.showMessageDialog(jList1, "No hiciste puntos :c");
@@ -767,6 +779,22 @@ public class Tablero extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        NodoLista temp = jugador_actual;
+        Jugadores gamer = (Jugadores) jugador_actual.datos;
+        Jugadores ganador = (Jugadores) jugador_actual.datos;
+        for (int i = 0; i < lista_jugadores.tam; i++) {
+            if (ganador.puntos > gamer.puntos) {
+                ganador = ganador;
+            } else {
+                ganador = gamer;
+            }
+            gamer = (Jugadores) temp.siguienteNodo.datos;
+        }
+        JOptionPane.showMessageDialog(jList1, "Felicidades " + ganador.nombre_usuario + " \n Ganaste con: " + ganador.puntos + " puntos.");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -808,6 +836,7 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
@@ -908,7 +937,7 @@ public class Tablero extends javax.swing.JFrame {
         }
 
         if (label == jLabel8) {
-            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely,x1,x2)) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely, x1, x2)) {
                 label.setLocation(labelx, labely);
                 m_temporales.item(0, 0).datos = x1;
                 m_temporales.item(0, 1).datos = x2;
@@ -923,7 +952,7 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel9) {
-            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely,x1,x2)) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely, x1, x2)) {
                 label.setLocation(labelx, labely);
                 m_temporales.item(1, 0).datos = x1;
                 m_temporales.item(1, 1).datos = x2;
@@ -937,7 +966,7 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel10) {
-            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely,x1,x2)) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely, x1, x2)) {
                 label.setLocation(labelx, labely);
                 m_temporales.item(2, 0).datos = x1;
                 m_temporales.item(2, 1).datos = x2;
@@ -951,7 +980,7 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel11) {
-            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely,x1,x2)) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely, x1, x2)) {
                 label.setLocation(labelx, labely);
                 m_temporales.item(3, 0).datos = x1;
                 m_temporales.item(3, 1).datos = x2;
@@ -965,7 +994,7 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel12) {
-            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely,x1,x2)) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely, x1, x2)) {
                 label.setLocation(labelx, labely);
                 m_temporales.item(4, 0).datos = x1;
                 m_temporales.item(4, 1).datos = x2;
@@ -979,7 +1008,7 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel13) {
-            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely,x1,x2)) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely, x1, x2)) {
                 label.setLocation(labelx, labely);
                 m_temporales.item(5, 0).datos = x1;
                 m_temporales.item(5, 1).datos = x2;
@@ -993,7 +1022,7 @@ public class Tablero extends javax.swing.JFrame {
             }
             System.out.println("se detuvo en x: " + (label.getX() + mme.getX() - label.getWidth() / 2) + " y: " + (label.getY() + mme.getY() - label.getHeight() / 2));
         } else if (label == jLabel14) {
-            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely,x1,x2)) {
+            if (labelx > 0 && labely > 0 && validar_pos(labelx, labely, x1, x2)) {
                 label.setLocation(labelx, labely);
                 m_temporales.item(6, 0).datos = x1;
                 m_temporales.item(6, 1).datos = x2;
@@ -1171,6 +1200,15 @@ public class Tablero extends javax.swing.JFrame {
                     }
                 }
             }
+            if (concat != "") {
+                if (diccionario.dic(concat)) {
+                    //System.out.println("funciono x: " + i + " , y: " + j);
+                    Jugadores gamer = (Jugadores) jugador_actual.datos;
+                    gamer.puntos += puntos;
+                    jugador_actual.datos = gamer;
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -1209,7 +1247,39 @@ public class Tablero extends javax.swing.JFrame {
                     }
                 }
             }
+            if (concat != "") {
+                if (diccionario.dic(concat)) {
+                    //System.out.println("funciono x: " + i + " , y: " + j);
+                    Jugadores gamer = (Jugadores) jugador_actual.datos;
+                    gamer.puntos += puntos;
+                    jugador_actual.datos = gamer;
+                    return true;
+                }
+            }
         }
         return false;
+    }
+
+    public void grafo_jugadores() {
+        String archivo="";
+        graficar grafic = new graficar();
+        //archivo = archivo + head.getName() + "; \n";
+        NodoLista temp = jugador_actual;
+        Jugadores gamer = (Jugadores) jugador_actual.datos;
+        //Jugadores ganador = (Jugadores) jugador_actual.datos;
+        for (int i = 0; i < lista_jugadores.tam; i++) {
+            archivo = archivo + gamer.getNombre_usuario() + "; \n"; 
+            gamer = (Jugadores) temp.siguienteNodo.datos;
+        }
+        temp = jugador_actual;
+        do{
+        gamer = (Jugadores) temp.datos; 
+        Jugadores ganador = (Jugadores) temp.siguienteNodo.datos;
+        archivo = archivo + gamer.getNombre_usuario() + " -> " + ganador.getNombre_usuario() + "; \n";
+        temp=temp.siguienteNodo;
+        }while(temp.siguienteNodo!=null);
+        System.out.println(archivo);
+        grafic.grafo(archivo, "jugadores");
+        grafic.generar("jugadores");
     }
 }
