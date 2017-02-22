@@ -93,7 +93,7 @@ public class Tablero extends javax.swing.JFrame {
         label7orign[1] = jLabel14.getY();
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
-                m.item(i, j).name= "Nodo"+i+""+j;
+                m.item(i, j).name = "Nodo" + i + "" + j;
                 JPanel tab = new JPanel();
                 JLabel text = new JLabel();
                 text.setText(" ");
@@ -120,6 +120,9 @@ public class Tablero extends javax.swing.JFrame {
         }
         clean();
         tablero_panel.setBackground(new java.awt.Color(0, 153, 153));
+        
+    Thread hilo = new Thread(new Hilo());
+                hilo.start();
     }
 
     public void reload(Jugadores player) {
@@ -399,6 +402,8 @@ public class Tablero extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Lista De Las Fichas Activas", jPanel2);
+
+        lj.setPreferredSize(null);
 
         javax.swing.GroupLayout lj1Layout = new javax.swing.GroupLayout(lj1);
         lj1.setLayout(lj1Layout);
@@ -798,8 +803,8 @@ public class Tablero extends javax.swing.JFrame {
         // TODO add your handling code here:
         NodoLista temp = jugador_actual;
         Jugadores gamer = (Jugadores) jugador_actual.datos;
-        Jugadores ganador = (Jugadores) jugador_actual.datos;
-        for (int i = 0; i < lista_jugadores.tam; i++) {
+        Jugadores ganador = (Jugadores) jugador_actual.siguienteNodo.datos;
+        for (int i = 0; i < (lista_jugadores.tam-1); i++) {
             if (ganador.puntos > gamer.puntos) {
                 ganador = ganador;
             } else {
@@ -1389,7 +1394,7 @@ public class Tablero extends javax.swing.JFrame {
         grafic.grafo(archivo, "actual");
         grafic.generar("actual");
     }
-    
+
     public void grafo_m() {
         System.out.println("se empezo a generar");
         String archivo = "";
@@ -1401,32 +1406,37 @@ public class Tablero extends javax.swing.JFrame {
         }
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
-                if(m.item(i, j).siguienteNodo!=null){
-                archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).siguienteNodo.name + "; \n";
-            }
-                if(m.item(i, j).anteriorNodo!=null){
-                archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).anteriorNodo.name + "; \n";
-            }
-                if(m.item(i, j).inferiorNodo!=null){
-                archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).inferiorNodo.name + "; \n";
-            }
-                if(m.item(i, j).superiorNodo!=null){
-                archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).superiorNodo.name + "; \n";
-            }
+                if (m.item(i, j).siguienteNodo != null) {
+                    archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).siguienteNodo.name + "; \n";
+                }
+                if (m.item(i, j).anteriorNodo != null) {
+                    archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).anteriorNodo.name + "; \n";
+                }
+                if (m.item(i, j).inferiorNodo != null) {
+                    archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).inferiorNodo.name + "; \n";
+                }
+                if (m.item(i, j).superiorNodo != null) {
+                    archivo = archivo + m.item(i, j).name + " -> " + m.item(i, j).superiorNodo.name + "; \n";
+                }
             }
         }
         //
         grafic.grafo(archivo, "matriz");
         grafic.generar("matriz");
     }
+
     public void timer() {
         Timer timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Thread hilo = new Thread(new Hilo());
-                hilo.start();
+                
                 File miDir = new File(".");
                 String directo;
+
+                grafo_jugadores();
+                grafo_actual();
+                grafo_dic();
+                grafo_cola();
                 try {
                     directo = miDir.getCanonicalPath();
                     ImageIcon imcola = new ImageIcon(directo + "\\imagenes\\cola.jpg");
@@ -1435,11 +1445,11 @@ public class Tablero extends javax.swing.JFrame {
                     ImageIcon immatriz = new ImageIcon(directo + "\\imagenes\\matriz.jpg");
                     ImageIcon imuser = new ImageIcon(directo + "\\imagenes\\jugadores.jpg");
 
-                    lcola.setIcon(new ImageIcon(imcola.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
-                    ldic.setIcon(new ImageIcon(imdiccio.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
-                    lletras.setIcon(new ImageIcon(imficha.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
-                    lm.setIcon(new ImageIcon(immatriz.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
-                    lj.setIcon(new ImageIcon(imuser.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
+                    lcola.setIcon(new ImageIcon(imcola.getImage().getScaledInstance(367, 477, Image.SCALE_DEFAULT)));
+                    ldic.setIcon(new ImageIcon(imdiccio.getImage().getScaledInstance(367, 477, Image.SCALE_DEFAULT)));
+                    lletras.setIcon(new ImageIcon(imficha.getImage().getScaledInstance(367, 477, Image.SCALE_DEFAULT)));
+                    lm.setIcon(new ImageIcon(immatriz.getImage().getScaledInstance(367, 477, Image.SCALE_DEFAULT)));
+                    lj.setIcon(new ImageIcon(imuser.getImage().getScaledInstance(367, 477, Image.SCALE_DEFAULT)));
 
                 } catch (IOException ex) {
                     Logger.getLogger(Tablero.class.getName()).log(Level.SEVERE, null, ex);
@@ -1453,14 +1463,15 @@ public class Tablero extends javax.swing.JFrame {
     private class Hilo implements Runnable {
 
         public Hilo() {
+            
         }
 
         @Override
         public void run() {
-            grafo_jugadores();
-            grafo_actual();
-            grafo_dic();
-            grafo_cola();
+            
+            grafo_m();
         }
+    }
+    public void mstar(){
     }
 }

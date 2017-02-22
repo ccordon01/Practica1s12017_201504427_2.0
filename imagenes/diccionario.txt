@@ -11,6 +11,7 @@ practica;
 primera; 
 correo; 
 juego; 
+ae; 
 hola -> mundo; 
 mundo -> como; 
 como -> estas; 
@@ -22,5 +23,6 @@ universidad -> practica;
 practica -> primera; 
 primera -> correo; 
 correo -> juego; 
+juego -> ae; 
 
 }

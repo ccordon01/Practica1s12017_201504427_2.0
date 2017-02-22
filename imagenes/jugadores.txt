@@ -1,8 +1,0 @@
-digraph G
-{ww; 
-zx; 
-zx; 
-ww -> zx; 
-zx -> qq; 
-
-}
