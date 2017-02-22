@@ -97,15 +97,37 @@ public class ListaSimple {
                 return false;
             }
         }
-        insertarAlFinal(word);
     return true;
+    }
+    
+    public Boolean dic(String word){
+        for (int i = 0; i < getsize(); i++) {
+            if (nodoPosicionO(i).toString().equalsIgnoreCase(word)) {
+                nodoPosicionKill(i);
+                return true;
+            }
+        }
+        //insertarAlFinal(word);
+    return false;
     }
     public String nodoPosicionKill(int posicion) {
         String palabra = null;
         if (!estaVacia()) {
             if (posicion == 0) {
                 palabra = eliminarDelFrente().toString();
-            } else {
+            }
+            else if(posicion==getsize() || posicion==(getsize()-1)){
+                System.out.println("vas a borrar ultimo nodo");
+                NodoLista tempnodo = primerNodo;
+                for (int i = 0; i < (getsize()-2); i++) {
+                    tempnodo = tempnodo.siguienteNodo;
+                }
+                palabra=ultimoNodo.datos.toString();
+                System.out.println("get: "+palabra);
+                ultimoNodo= tempnodo.siguienteNodo;
+                tempnodo.siguienteNodo = ultimoNodo;
+            }
+            else {
                 NodoLista temp = primerNodo;
                 int c = -1;
                 //System.out.println(" ");

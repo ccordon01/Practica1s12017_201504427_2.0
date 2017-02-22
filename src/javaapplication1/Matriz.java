@@ -118,6 +118,8 @@ public class Matriz {
     }
 
     public NodoMatriz item(int x, int y) {
+        //System.out.println("entro x: "+x);
+        //System.out.println("entro y: "+y);
         int contador_busqueda = 0;
         NodoMatriz auxiliar = primerNodo;
         if (x != 0) {
