@@ -3,9 +3,13 @@ package javaapplication1;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Label;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -89,6 +93,7 @@ public class Tablero extends javax.swing.JFrame {
         label7orign[1] = jLabel14.getY();
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
+                m.item(i, j).name= "Nodo"+i+""+j;
                 JPanel tab = new JPanel();
                 JLabel text = new JLabel();
                 text.setText(" ");
@@ -1277,121 +1282,147 @@ public class Tablero extends javax.swing.JFrame {
 
     public void grafo_jugadores() {
         System.out.println("se empezo a generar");
-        String archivo="";
+        String archivo = "";
         graficar grafic = new graficar();
         //archivo = archivo + head.getName() + "; \n";
         NodoLista temp = jugador_actual;
         Jugadores gamer = (Jugadores) jugador_actual.datos;
         //Jugadores ganador = (Jugadores) jugador_actual.datos;
         for (int i = 0; i < lista_jugadores.tam; i++) {
-            archivo = archivo + gamer.getNombre_usuario() + "; \n"; 
+            archivo = archivo + gamer.getNombre_usuario() + "; \n";
             gamer = (Jugadores) temp.siguienteNodo.datos;
         }
         temp = jugador_actual;
-        int n=1;
-        do{
-        gamer = (Jugadores) temp.datos; 
-        Jugadores ganador = (Jugadores) temp.siguienteNodo.datos;
-        archivo = archivo + gamer.getNombre_usuario() + " -> " + ganador.getNombre_usuario() + "; \n";
-        temp=temp.siguienteNodo;
-        n++;
-        }while(n!=lista_jugadores.tam);
-        System.out.println(archivo);
+        int n = 1;
+        do {
+            gamer = (Jugadores) temp.datos;
+            Jugadores ganador = (Jugadores) temp.siguienteNodo.datos;
+            archivo = archivo + gamer.getNombre_usuario() + " -> " + ganador.getNombre_usuario() + "; \n";
+            temp = temp.siguienteNodo;
+            n++;
+        } while (n != lista_jugadores.tam);
+        //System.out.println(archivo);
         grafic.grafo(archivo, "jugadores");
         grafic.generar("jugadores");
     }
+
     public void grafo_dic() {
         System.out.println("se empezo a generar");
-        String archivo="";
+        String archivo = "";
         graficar grafic = new graficar();
         //archivo = archivo + head.getName() + "; \n";
         NodoLista temp = diccionario.primerNodo;
         NodoLista ganador = diccionario.primerNodo;
         //Jugadores ganador = (Jugadores) jugador_actual.datos;
         for (int i = 0; i < diccionario.getsize(); i++) {
-            archivo = archivo + temp.datos + "; \n"; 
+            archivo = archivo + temp.datos + "; \n";
             temp = temp.siguienteNodo;
         }
         temp = diccionario.primerNodo;
-        int n=1;
-        do{
-        //gamer = temp; 
-        ganador = temp.siguienteNodo;
-        archivo = archivo + temp.datos + " -> " + ganador.datos + "; \n";
-        temp=temp.siguienteNodo;
-        n++;
-        }while(n!=diccionario.getsize());
-        System.out.println(archivo);
+        int n = 1;
+        do {
+            //gamer = temp; 
+            ganador = temp.siguienteNodo;
+            archivo = archivo + temp.datos + " -> " + ganador.datos + "; \n";
+            temp = temp.siguienteNodo;
+            n++;
+        } while (n != diccionario.getsize());
+        //System.out.println(archivo);
         grafic.grafo(archivo, "diccionario");
         grafic.generar("diccionario");
-}
+    }
+
     public void grafo_cola() {
         System.out.println("se empezo a generar");
-        String archivo="";
+        String archivo = "";
         graficar grafic = new graficar();
         //archivo = archivo + head.getName() + "; \n";
         NodoLista temp = letras_cola.primerNodo;
         NodoLista ganador = letras_cola.primerNodo;
         //Jugadores ganador = (Jugadores) jugador_actual.datos;
         for (int i = 0; i < letras_cola.getsize(); i++) {
-            Letras dat= (Letras) temp.datos;
-            archivo = archivo + dat.letra + "; \n"; 
+            Letras dat = (Letras) temp.datos;
+            archivo = archivo + dat.letra + "; \n";
             temp = temp.siguienteNodo;
         }
         temp = letras_cola.primerNodo;
-        int n=1;
-        do{
-        //gamer = temp; 
-        ganador = temp.siguienteNodo;
-        Letras dat= (Letras) temp.datos;
-        Letras dat1= (Letras) ganador.datos;
-        archivo = archivo + dat.letra + " -> " + dat1.letra + "; \n";
-        temp=temp.siguienteNodo;
-        n++;
-        }while(n!=letras_cola.getsize());
-        System.out.println(archivo);
+        int n = 1;
+        do {
+            //gamer = temp; 
+            ganador = temp.siguienteNodo;
+            Letras dat = (Letras) temp.datos;
+            Letras dat1 = (Letras) ganador.datos;
+            archivo = archivo + dat.letra + " -> " + dat1.letra + "; \n";
+            temp = temp.siguienteNodo;
+            n++;
+        } while (n != letras_cola.getsize());
+        //System.out.println(archivo);
         grafic.grafo(archivo, "cola");
         grafic.generar("cola");
-}
+    }
+
     public void grafo_actual() {
         System.out.println("se empezo a generar");
-        String archivo="";
+        String archivo = "";
         graficar grafic = new graficar();
         //archivo = archivo + head.getName() + "; \n";
         Jugadores ganador1 = (Jugadores) jugador_actual.datos;
         NodoLista temp = ganador1.palabras.primerNodo;
         NodoLista ganador = ganador1.palabras.primerNodo;
         for (int i = 0; i < ganador1.palabras.getsize(); i++) {
-            Letras dat= (Letras) temp.datos;
-            archivo = archivo + dat.letra + "; \n"; 
+            Letras dat = (Letras) temp.datos;
+            archivo = archivo + dat.letra + "; \n";
             temp = temp.siguienteNodo;
         }
         temp = ganador1.palabras.primerNodo;
-        int n=1;
-        do{
-        //gamer = temp; 
-        ganador = temp.siguienteNodo;
-        Letras dat= (Letras) temp.datos;
-        Letras dat1= (Letras) ganador.datos;
-        archivo = archivo + dat.letra + " -> " + dat1.letra + "; \n";
-        temp=temp.siguienteNodo;
-        n++;
-        }while(n!=ganador1.palabras.getsize());
-        System.out.println(archivo);
+        int n = 1;
+        do {
+            //gamer = temp; 
+            ganador = temp.siguienteNodo;
+            Letras dat = (Letras) temp.datos;
+            Letras dat1 = (Letras) ganador.datos;
+            archivo = archivo + dat.letra + " -> " + dat1.letra + "; \n";
+            temp = temp.siguienteNodo;
+            n++;
+        } while (n != ganador1.palabras.getsize());
+        //System.out.println(archivo);
         grafic.grafo(archivo, "actual");
         grafic.generar("actual");
-}
+    }
+    
+    public void grafo_m() {
+        System.out.println("se empezo a generar");
+        String archivo = "";
+        graficar grafic = new graficar();
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                archivo = archivo + m.item(i, j).name + "; \n";
+            }
+        }
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                archivo = archivo + m.item(i, j).name + "; \n";
+            }
+        }
+        //archivo = archivo + dat.letra + " -> " + dat1.letra + "; \n";
+        
+        //System.out.println(archivo);
+        grafic.grafo(archivo, "matriz");
+        grafic.generar("matriz");
+    }
     public void timer() {
         Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Thread hilo = new Thread(new Hilo());
+                hilo.start();
                 File miDir = new File(".");
                 String directo;
                 try {
-                     directo = miDir.getCanonicalPath();
+                    directo = miDir.getCanonicalPath();
                     ImageIcon imcola = new ImageIcon(directo + "\\imagenes\\cola.jpg");
                     ImageIcon imdiccio = new ImageIcon(directo + "\\imagenes\\diccionario.jpg");
-                    ImageIcon imficha = new ImageIcon(directo + "\\imagenes\\ficha.jpg");
+                    ImageIcon imficha = new ImageIcon(directo + "\\imagenes\\actual.jpg");
                     ImageIcon immatriz = new ImageIcon(directo + "\\imagenes\\matriz.jpg");
                     ImageIcon imuser = new ImageIcon(directo + "\\imagenes\\jugadores.jpg");
 
@@ -1409,5 +1440,19 @@ public class Tablero extends javax.swing.JFrame {
         });
         timer.start();
     }
-}
 
+    private class Hilo implements Runnable {
+
+        public Hilo() {
+        }
+
+        @Override
+        public void run() {
+            grafo_jugadores();
+            grafo_actual();
+            grafo_dic();
+            grafo_cola();
+            grafo_m();
+        }
+    }
+}
