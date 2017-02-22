@@ -214,7 +214,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
             ListaSimple letras_j = new ListaSimple();
             for (int i = 0; i < 7; i++) {
                 Letras temp_l = (Letras) letras_cola.eliminarDelFrente();
-                System.out.println("Letra " + user + " string " + temp_l.getLetra());
+                //System.out.println("Letra " + user + " string " + temp_l.getLetra());
                 letras_j.insertarAlFinal(temp_l);
             }
             Jugadores gamer = new Jugadores(user, 0, letras_j);
@@ -238,9 +238,9 @@ public class Form_Jugadores extends javax.swing.JFrame {
             if (lista_jugadores.primerNodo.siguienteNodo == lista_jugadores.ultimoNodo) {
                 System.out.println("si ultimo");
             }
-            System.out.println("opcion 2");
+            //System.out.println("opcion 2");
             Boolean crear = lista_jugadores.validar(user);
-            System.out.println("tamaño " + lista_jugadores.getsize());
+            //System.out.println("tamaño " + lista_jugadores.getsize());
             /*for (int i = 0; i < lista_jugadores.getsize(); i++) {
                 Jugadores temp_j = (Jugadores) lista_jugadores.nodoPosicion(i);
             System.out.println("opcion prueba "+temp_j.getNombre_usuario());
@@ -253,7 +253,7 @@ public class Form_Jugadores extends javax.swing.JFrame {
                 ListaSimple letras_j = new ListaSimple();
                 for (int i = 0; i < 7; i++) {
                     Letras temp_l = (Letras) letras_cola.eliminarDelFrente();
-                    System.out.println("Letra " + user + " string " + temp_l.getLetra());
+                    //System.out.println("Letra " + user + " string " + temp_l.getLetra());
                     letras_j.insertarAlFinal(temp_l);
                 }
                 Jugadores gamer = new Jugadores(user, 0, letras_j);
@@ -282,14 +282,17 @@ public class Form_Jugadores extends javax.swing.JFrame {
             int random=0;
             //do{
             random = (int) (Math.random() * (lista_jugadores.tam - 1));
-            System.out.println("posicion "+random + " Tamaño actual: "+lista_jugadores.tam );
+            //System.out.println("posicion "+random + " Tamaño actual: "+lista_jugadores.tam );
             //}while(random==0);
             Jugadores player = lista_jugadores.nodoPosicion(random);
             tab.jugador_actual= lista_jugadores.nodoPosicionN(random) ;
             JOptionPane.showMessageDialog(null, "Comienza la partida: "+player.getNombre_usuario());
-            System.out.println("posicion "+random);
+            //System.out.println("posicion "+random);
             tab.reload(player);
             tab.grafo_jugadores();
+            tab.grafo_actual();
+            tab.grafo_dic();
+            tab.grafo_cola();
             tab.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Como minimo 2 jugadores");

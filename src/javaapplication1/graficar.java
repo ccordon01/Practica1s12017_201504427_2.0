@@ -17,6 +17,7 @@ public class graficar {
         try {
             File miDir = new File(".");
             String directo = miDir.getCanonicalPath();
+            System.out.println(directo);
             File vo = new File(directo + "\\imagenes\\" + nombre + ".txt");
             BufferedWriter bw;
             if (vo.exists()) {

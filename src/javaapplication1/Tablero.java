@@ -1,11 +1,16 @@
 package javaapplication1;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Label;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -176,10 +181,15 @@ public class Tablero extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        lletras = new javax.swing.JLabel();
+        lj1 = new javax.swing.JPanel();
+        lj = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        lm = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        lcola = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        ldic = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -376,37 +386,37 @@ public class Tablero extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addComponent(lletras, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addComponent(lletras, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Lista De Las Fichas Activas", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+        javax.swing.GroupLayout lj1Layout = new javax.swing.GroupLayout(lj1);
+        lj1.setLayout(lj1Layout);
+        lj1Layout.setHorizontalGroup(
+            lj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lj, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+        lj1Layout.setVerticalGroup(
+            lj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lj, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Lista De Jugadores", jPanel3);
+        jTabbedPane1.addTab("Lista De Jugadores", lj1);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addComponent(lm, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addComponent(lm, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Matriz Tablero", jPanel5);
@@ -415,11 +425,11 @@ public class Tablero extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addComponent(lcola, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addComponent(lcola, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Cola De Fichas", jPanel4);
@@ -428,11 +438,11 @@ public class Tablero extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addComponent(ldic, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addComponent(ldic, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Lista Diccionario", jPanel1);
@@ -861,7 +871,6 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -870,6 +879,12 @@ public class Tablero extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lcola;
+    private javax.swing.JLabel ldic;
+    private javax.swing.JLabel lj;
+    private javax.swing.JPanel lj1;
+    private javax.swing.JLabel lletras;
+    private javax.swing.JLabel lm;
     private javax.swing.JPanel tablero_panel;
     // End of variables declaration//GEN-END:variables
 
@@ -1261,6 +1276,7 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     public void grafo_jugadores() {
+        System.out.println("se empezo a generar");
         String archivo="";
         graficar grafic = new graficar();
         //archivo = archivo + head.getName() + "; \n";
@@ -1272,14 +1288,126 @@ public class Tablero extends javax.swing.JFrame {
             gamer = (Jugadores) temp.siguienteNodo.datos;
         }
         temp = jugador_actual;
+        int n=1;
         do{
         gamer = (Jugadores) temp.datos; 
         Jugadores ganador = (Jugadores) temp.siguienteNodo.datos;
         archivo = archivo + gamer.getNombre_usuario() + " -> " + ganador.getNombre_usuario() + "; \n";
         temp=temp.siguienteNodo;
-        }while(temp.siguienteNodo!=null);
+        n++;
+        }while(n!=lista_jugadores.tam);
         System.out.println(archivo);
         grafic.grafo(archivo, "jugadores");
         grafic.generar("jugadores");
     }
+    public void grafo_dic() {
+        System.out.println("se empezo a generar");
+        String archivo="";
+        graficar grafic = new graficar();
+        //archivo = archivo + head.getName() + "; \n";
+        NodoLista temp = diccionario.primerNodo;
+        NodoLista ganador = diccionario.primerNodo;
+        //Jugadores ganador = (Jugadores) jugador_actual.datos;
+        for (int i = 0; i < diccionario.getsize(); i++) {
+            archivo = archivo + temp.datos + "; \n"; 
+            temp = temp.siguienteNodo;
+        }
+        temp = diccionario.primerNodo;
+        int n=1;
+        do{
+        //gamer = temp; 
+        ganador = temp.siguienteNodo;
+        archivo = archivo + temp.datos + " -> " + ganador.datos + "; \n";
+        temp=temp.siguienteNodo;
+        n++;
+        }while(n!=diccionario.getsize());
+        System.out.println(archivo);
+        grafic.grafo(archivo, "diccionario");
+        grafic.generar("diccionario");
 }
+    public void grafo_cola() {
+        System.out.println("se empezo a generar");
+        String archivo="";
+        graficar grafic = new graficar();
+        //archivo = archivo + head.getName() + "; \n";
+        NodoLista temp = letras_cola.primerNodo;
+        NodoLista ganador = letras_cola.primerNodo;
+        //Jugadores ganador = (Jugadores) jugador_actual.datos;
+        for (int i = 0; i < letras_cola.getsize(); i++) {
+            Letras dat= (Letras) temp.datos;
+            archivo = archivo + dat.letra + "; \n"; 
+            temp = temp.siguienteNodo;
+        }
+        temp = letras_cola.primerNodo;
+        int n=1;
+        do{
+        //gamer = temp; 
+        ganador = temp.siguienteNodo;
+        Letras dat= (Letras) temp.datos;
+        Letras dat1= (Letras) ganador.datos;
+        archivo = archivo + dat.letra + " -> " + dat1.letra + "; \n";
+        temp=temp.siguienteNodo;
+        n++;
+        }while(n!=letras_cola.getsize());
+        System.out.println(archivo);
+        grafic.grafo(archivo, "cola");
+        grafic.generar("cola");
+}
+    public void grafo_actual() {
+        System.out.println("se empezo a generar");
+        String archivo="";
+        graficar grafic = new graficar();
+        //archivo = archivo + head.getName() + "; \n";
+        Jugadores ganador1 = (Jugadores) jugador_actual.datos;
+        NodoLista temp = ganador1.palabras.primerNodo;
+        NodoLista ganador = ganador1.palabras.primerNodo;
+        for (int i = 0; i < ganador1.palabras.getsize(); i++) {
+            Letras dat= (Letras) temp.datos;
+            archivo = archivo + dat.letra + "; \n"; 
+            temp = temp.siguienteNodo;
+        }
+        temp = ganador1.palabras.primerNodo;
+        int n=1;
+        do{
+        //gamer = temp; 
+        ganador = temp.siguienteNodo;
+        Letras dat= (Letras) temp.datos;
+        Letras dat1= (Letras) ganador.datos;
+        archivo = archivo + dat.letra + " -> " + dat1.letra + "; \n";
+        temp=temp.siguienteNodo;
+        n++;
+        }while(n!=ganador1.palabras.getsize());
+        System.out.println(archivo);
+        grafic.grafo(archivo, "actual");
+        grafic.generar("actual");
+}
+    public void timer() {
+        Timer timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                File miDir = new File(".");
+                String directo;
+                try {
+                     directo = miDir.getCanonicalPath();
+                    ImageIcon imcola = new ImageIcon(directo + "\\imagenes\\cola.jpg");
+                    ImageIcon imdiccio = new ImageIcon(directo + "\\imagenes\\diccionario.jpg");
+                    ImageIcon imficha = new ImageIcon(directo + "\\imagenes\\ficha.jpg");
+                    ImageIcon immatriz = new ImageIcon(directo + "\\imagenes\\matriz.jpg");
+                    ImageIcon imuser = new ImageIcon(directo + "\\imagenes\\jugadores.jpg");
+
+                    lcola.setIcon(new ImageIcon(imcola.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
+                    ldic.setIcon(new ImageIcon(imdiccio.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
+                    lletras.setIcon(new ImageIcon(imficha.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
+                    lm.setIcon(new ImageIcon(immatriz.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
+                    lj.setIcon(new ImageIcon(imuser.getImage().getScaledInstance(265, 404, Image.SCALE_DEFAULT)));
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Tablero.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+        });
+        timer.start();
+    }
+}
+
